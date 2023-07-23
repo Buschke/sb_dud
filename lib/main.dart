@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'osternrechner.dart';  // Aktualisierter Import
-import 'zweite_seite.dart';
+import 'tankverwalter.dart';  // Aktualisierter Import
 
 void main() {
   runApp(const MainApp());
@@ -34,12 +34,12 @@ class MainApp extends StatelessWidget {
                 ),
                 SizedBox(height: 50),  // Abstand hinzufügen
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.pageview, size: 30),  // Symbol für Zweite Seite
-                  label: const Text('Go to Zweite Seite'),
+                  icon: const Icon(Icons.local_gas_station, size: 30),  // Symbol für Tankverwalter
+                  label: const Text('Go to Tankverwalter'),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ZweiteSeite()),
+                      MaterialPageRoute(builder: (context) => const Tankverwalter()),  // Aktualisierter Seitenname
                     );
                   },
                 ),
