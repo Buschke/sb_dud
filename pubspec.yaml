@@ -1,7 +1,7 @@
 name: dies_und_das
 description: Sven's Schweizer Spezialtaschenmesser
 publish_to: 'none'
-version: 0.1.0
+version: 0.2.0+1
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
