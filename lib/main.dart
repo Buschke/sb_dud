@@ -22,7 +22,7 @@ class MainApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 50),  // Abstand hinzufügen
+                const SizedBox(height: 50),  // Abstand hinzufügen
                 ElevatedButton.icon(
                   icon: const Icon(Icons.date_range, size: 30),  // Symbol für Osternrechner
                   label: const Text('Gaußscher Ostern-Rechner'),
@@ -33,7 +33,7 @@ class MainApp extends StatelessWidget {
                     );
                   },
                 ),
-                SizedBox(height: 50),  // Abstand hinzufügen
+                const SizedBox(height: 50),  // Abstand hinzufügen
                 ElevatedButton.icon(
                   icon: const Icon(Icons.local_gas_station, size: 30),  // Symbol für Tankverwalter
                   label: const Text('Tankverwalter'),
@@ -44,7 +44,7 @@ class MainApp extends StatelessWidget {
                     );
                   },
                 ),
-                SizedBox(height: 50),  // Abstand hinzufügen
+                const SizedBox(height: 50),  // Abstand hinzufügen
                 ElevatedButton.icon(
                   icon: const Icon(Icons.record_voice_over, size: 30),  // Symbol für Wortflüssigkeit
                   label: const Text('Wortflüssigkeit'),
