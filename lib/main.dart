@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'osternrechner.dart';
+import 'osternrechner/osternrechner.dart';
 import 'tankverwalter/tankverwalter.dart';
-import 'wortfluessigkeit/history_manager.dart';  // Neuer Import
+import 'wortfluessigkeit/history_manager.dart';
+import 'physikplot/physikplot_tv4.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,8 +14,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Builder(builder: (context) =>
-        Scaffold(
+      home: Builder(
+        builder: (context) => Scaffold(
           appBar: AppBar(
             title: const Text('Home Page'),
           ),
@@ -22,36 +23,55 @@ class MainApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(height: 50),  // Abstand hinzufügen
+                const SizedBox(height: 50), // Abstand hinzufügen
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.date_range, size: 30),  // Symbol für Osternrechner
+                  icon: const Icon(Icons.date_range,
+                      size: 30), // Symbol für Osternrechner
                   label: const Text('Gaußscher Ostern-Rechner'),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const OsterPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const OsterPage()),
                     );
                   },
                 ),
-                const SizedBox(height: 50),  // Abstand hinzufügen
+                const SizedBox(height: 50), // Abstand hinzufügen
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.local_gas_station, size: 30),  // Symbol für Tankverwalter
+                  icon: const Icon(Icons.local_gas_station,
+                      size: 30), // Symbol für Tankverwalter
                   label: const Text('Tankverwalter'),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Tankverwalter()),
+                      MaterialPageRoute(
+                          builder: (context) => const Tankverwalter()),
                     );
                   },
                 ),
-                const SizedBox(height: 50),  // Abstand hinzufügen
+                const SizedBox(height: 50), // Abstand hinzufügen
                 ElevatedButton.icon(
-                  icon: const Icon(Icons.record_voice_over, size: 30),  // Symbol für Wortflüssigkeit
+                  icon: const Icon(Icons.record_voice_over,
+                      size: 30), // Symbol für Wortflüssigkeit
                   label: const Text('Wortflüssigkeit'),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HistoryManager()),
+                      MaterialPageRoute(
+                          builder: (context) => const HistoryManager()),
+                    );
+                  },
+                ),
+                const SizedBox(height: 50), // Abstand hinzufügen
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.auto_awesome,
+                      size: 30), // Symbol for Physikplot TV4
+                  label: const Text('P II - TV 4'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PhysikplotTV4()),
                     );
                   },
                 ),
