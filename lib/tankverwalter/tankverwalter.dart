@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +21,8 @@ class _TankverwalterState extends State<Tankverwalter> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
+  List<Map<String, dynamic>> tankvorgaenge = [];
+
   @override
   void initState() {
     super.initState();
@@ -34,6 +37,10 @@ class _TankverwalterState extends State<Tankverwalter> {
       getankteLiter = (prefs?.getInt('getankteLiter') ?? 0);
       gefahreneKilometer = (prefs?.getInt('gefahreneKilometer') ?? 0);
       literpreis = (prefs?.getDouble('literpreis') ?? 1.80);
+      String? tankvorgaengeStr = prefs?.getString('tankvorgaenge');
+      if (tankvorgaengeStr != null) {
+        tankvorgaenge = List<Map<String, dynamic>>.from(jsonDecode(tankvorgaengeStr));
+      }
     });
   }
 
@@ -42,6 +49,19 @@ class _TankverwalterState extends State<Tankverwalter> {
     await prefs?.setInt('getankteLiter', getankteLiter);
     await prefs?.setInt('gefahreneKilometer', gefahreneKilometer);
     await prefs?.setDouble('literpreis', literpreis);
+    await prefs?.setString('tankvorgaenge', jsonEncode(tankvorgaenge));
+  }
+
+  double berechneDurchschnittsverbrauch() {
+    double gesamtKilometer = 0;
+    double gesamtLiter = 0;
+
+    for (var vorgang in tankvorgaenge) {
+      gesamtKilometer += vorgang['gefahreneKilometer'];
+      gesamtLiter += vorgang['getankteLiter'];
+    }
+
+    return gesamtKilometer / gesamtLiter;
   }
 
   @override
@@ -145,9 +165,57 @@ class _TankverwalterState extends State<Tankverwalter> {
                   _focusedDay = focusedDay;
                 },
               ),
+              ElevatedButton(
+                onPressed: () {
+                  tankvorgaenge.add({
+                    'gesamtkilometer': gesamtkilometer,
+                    'getankteLiter': getankteLiter,
+                    'gefahreneKilometer': gefahreneKilometer,
+                    'literpreis': literpreis,
+                  });
+                  _saveData();
+                  print('Durchschnittsverbrauch: ${berechneDurchschnittsverbrauch()}');
+                },
+                child: Text('Log Benzintankvorgang'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LogPage(tankvorgaenge: tankvorgaenge)),
+                  );
+                },
+                child: Text('Show Log'),
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class LogPage extends StatelessWidget {
+  final List<Map<String, dynamic>> tankvorgaenge;
+
+  LogPage({Key? key, required this.tankvorgaenge}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Log Page'),
+      ),
+      body: ListView.builder(
+        itemCount: tankvorgaenge.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('Gesamtkilometer: ${tankvorgaenge[index]['gesamtkilometer']}'),
+            subtitle: Text('Getankte Liter: ${tankvorgaenge[index]['getankteLiter']}\n'
+                           'Gefahrene Kilometer: ${tankvorgaenge[index]['gefahreneKilometer']}\n'
+                           'Literpreis: ${tankvorgaenge[index]['literpreis']}'),
+          );
+        },
       ),
     );
   }

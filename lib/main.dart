@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'osternrechner.dart';
-import 'tankverwalter.dart';
+import 'tankverwalter/tankverwalter.dart';
 import 'wortfluessigkeit/history_manager.dart';  // Neuer Import
 
 void main() {

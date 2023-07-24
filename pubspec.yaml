@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   english_words: ^4.0.0
+  fl_chart: ^0.63.0
   flutter:
     sdk: flutter
   flutter_picker: ^2.1.0
