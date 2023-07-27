@@ -19,6 +19,16 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  msix: ^3.16.0
 
 flutter:
   uses-material-design: true
+
+msix_config:
+  display_name: Dies und das
+  publisher: CN=1129059E-C2BB-4C67-9662-52FC3D5803C9
+  publisher_display_name: SvenSoft & BuscByte Innovation Forge
+  identity_name: 16788SvenSoftBuscByteInno.Diesunddas
+  msix_version: 1.0.0.0
+  logo_path: C:\Users\sven\Documents\myDev\DailyChallenges\2-Tuesday\sb_dud\assets\logo\dud_logo.jpg
+  capabilities: internetClient, location, microphone, webcam
