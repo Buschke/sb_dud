@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(height: 50), // Abstand hinzufügen
+                const SizedBox(height: 50),
                 ElevatedButton.icon(
                   icon: const Icon(Icons.date_range,
                       size: 30), // Symbol für Osternrechner
@@ -36,7 +36,7 @@ class MainApp extends StatelessWidget {
                     );
                   },
                 ),
-                const SizedBox(height: 50), // Abstand hinzufügen
+                const SizedBox(height: 50),
                 ElevatedButton.icon(
                   icon: const Icon(Icons.local_gas_station,
                       size: 30), // Symbol für Tankverwalter
@@ -49,7 +49,7 @@ class MainApp extends StatelessWidget {
                     );
                   },
                 ),
-                const SizedBox(height: 50), // Abstand hinzufügen
+                const SizedBox(height: 50),
                 ElevatedButton.icon(
                   icon: const Icon(Icons.record_voice_over,
                       size: 30), // Symbol für Wortflüssigkeit
@@ -62,7 +62,7 @@ class MainApp extends StatelessWidget {
                     );
                   },
                 ),
-                const SizedBox(height: 50), // Abstand hinzufügen
+                const SizedBox(height: 50),
                 ElevatedButton.icon(
                   icon: const Icon(Icons.auto_awesome,
                       size: 30), // Symbol for Physikplot TV4
