@@ -4,6 +4,7 @@ import 'osternrechner/osternrechner.dart';
 import 'tankverwalter/tankverwalter.dart';
 import 'wortfluessigkeit/history_manager.dart';
 import 'physikplot/physikplot_tv4.dart';
+import 'einkaufshelfer/einkaufshelfer.dart';
 
 void main() {
   runApp(const MainApp());
@@ -84,7 +85,7 @@ class MainApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const EinkaufshelferApp()),
+                          builder: (context) => const Einkaufshelfer()),
                     );
                   },
                 ),
