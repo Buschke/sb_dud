@@ -1,3 +1,4 @@
+import 'package:dies_und_das/einkaufshelfer/einkaufshelfer.dart';
 import 'package:flutter/material.dart';
 import 'osternrechner/osternrechner.dart';
 import 'tankverwalter/tankverwalter.dart';
@@ -72,6 +73,18 @@ class MainApp extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const PhysikplotTV4()),
+                    );
+                  },
+                ),
+                const SizedBox(height: 50),
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.shopping_cart, size: 30),
+                  label: const Text('Einkaufshelfer'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const EinkaufshelferApp()),
                     );
                   },
                 ),
