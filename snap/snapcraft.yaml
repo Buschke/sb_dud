@@ -1,4 +1,4 @@
-name: dies_und_das
+name: dies-und-das
 version: 0.1.0
 summary: Svens Swiss Spezialtaschenmesser
 description: Diverse Tools für den täglichen Gebrauch
@@ -8,7 +8,7 @@ base: core18
 grade: stable
 
 slots:
-  dbus-super-cool-app: # adjust accordingly to your app name
+  dbus-dies-und-das: # adjust accordingly to your app name
     interface: dbus
     bus: session
     name: com.buschke.dies_und_das # adjust accordingly to your app name and
