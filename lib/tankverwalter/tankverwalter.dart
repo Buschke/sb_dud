@@ -17,7 +17,7 @@ class _TankverwalterState extends State<Tankverwalter> {
   int gefahreneKilometer = 0;
   double literpreis = 1.80;
   SharedPreferences? prefs;
-  CalendarFormat _calendarFormat = CalendarFormat.month;
+  final CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
@@ -78,7 +78,7 @@ class _TankverwalterState extends State<Tankverwalter> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
               Text('Willkommen auf der Tankverwalter Seite!',
@@ -92,7 +92,7 @@ class _TankverwalterState extends State<Tankverwalter> {
                   }),
                 ]),
                 selecteds: [gesamtkilometer],
-                title: Text('Bitte wählen Sie den Gesamtkilometerstand'),
+                title: const Text('Bitte wählen Sie den Gesamtkilometerstand'),
                 onConfirm: (Picker picker, List value) {
                   setState(() {
                     gesamtkilometer = picker.getSelectedValues()[0];
@@ -104,10 +104,10 @@ class _TankverwalterState extends State<Tankverwalter> {
                   style: TextStyle(fontSize: screenSize.width * 0.04)),
               Picker(
                 adapter: NumberPickerAdapter(data: [
-                  NumberPickerColumn(begin: 0, end: 100, jump: 1),
+                  const NumberPickerColumn(begin: 0, end: 100, jump: 1),
                 ]),
                 selecteds: [getankteLiter],
-                title: Text('Bitte wählen Sie die getankten Liter'),
+                title: const Text('Bitte wählen Sie die getankten Liter'),
                 onConfirm: (Picker picker, List value) {
                   setState(() {
                     getankteLiter = picker.getSelectedValues()[0];
@@ -119,10 +119,10 @@ class _TankverwalterState extends State<Tankverwalter> {
                   style: TextStyle(fontSize: screenSize.width * 0.04)),
               Picker(
                 adapter: NumberPickerAdapter(data: [
-                  NumberPickerColumn(begin: 0, end: 999999, jump: 1),
+                  const NumberPickerColumn(begin: 0, end: 999999, jump: 1),
                 ]),
                 selecteds: [gefahreneKilometer],
-                title: Text('Bitte wählen Sie die gefahrenen Kilometer mit letzter Tankfüllung'),
+                title: const Text('Bitte wählen Sie die gefahrenen Kilometer mit letzter Tankfüllung'),
                 onConfirm: (Picker picker, List value) {
                   setState(() {
                     gefahreneKilometer = picker.getSelectedValues()[0];
@@ -139,7 +139,7 @@ class _TankverwalterState extends State<Tankverwalter> {
                   }),
                 ]),
                 selecteds: [(literpreis * 100).toInt()],
-                title: Text('Bitte wählen Sie den Literpreis'),
+                title: const Text('Bitte wählen Sie den Literpreis'),
                 onConfirm: (Picker picker, List value) {
                   setState(() {
                     literpreis = picker.getSelectedValues()[0] / 100;
@@ -176,7 +176,7 @@ class _TankverwalterState extends State<Tankverwalter> {
                   _saveData();
                   print('Durchschnittsverbrauch: ${berechneDurchschnittsverbrauch()}');
                 },
-                child: Text('Log Benzintankvorgang'),
+                child: const Text('Log Benzintankvorgang'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -185,7 +185,7 @@ class _TankverwalterState extends State<Tankverwalter> {
                     MaterialPageRoute(builder: (context) => LogPage(tankvorgaenge: tankvorgaenge)),
                   );
                 },
-                child: Text('Show Log'),
+                child: const Text('Show Log'),
               ),
             ],
           ),
@@ -198,13 +198,13 @@ class _TankverwalterState extends State<Tankverwalter> {
 class LogPage extends StatelessWidget {
   final List<Map<String, dynamic>> tankvorgaenge;
 
-  LogPage({Key? key, required this.tankvorgaenge}) : super(key: key);
+  const LogPage({Key? key, required this.tankvorgaenge}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Log Page'),
+        title: const Text('Log Page'),
       ),
       body: ListView.builder(
         itemCount: tankvorgaenge.length,
